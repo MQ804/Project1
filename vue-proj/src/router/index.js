@@ -1,22 +1,52 @@
+import Layout from '@/layout/index.vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
-const routes = [
+export const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'header',
+        component: () => import('@/layout/components/header/header.vue'),
+        name: 'header',
+      },
+      {
+        path: 'footer',
+        component: () => import('@/layout/components/footer.vue'),
+        name: 'footer',
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/userData',
+    component: () => import('@/views/UserData.vue'),
+    title: 'UserData',
+    icon: 'bar-chart-line-fill',
+  },
+  {
+    path: '/Clients',
+    component: () => import('@/views/Clients.vue'),
+    title: 'Clients',
+  },
+  {
+    path: '/page2',
+    component: () => import('@/views/Page2.vue'),
+    title: 'Page 2',
+  },
+  {
+    path: '/page3',
+    component: () => import('@/views/Page3'),
+    title: 'Page 3',
+  },
+  {
+    path: '/page4',
+    component: () => import('@/views/Page4'),
+    title: 'Page 4',
   },
 ];
 
