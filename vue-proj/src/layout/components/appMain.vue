@@ -1,5 +1,5 @@
 <template>
-  <router-view :key="key" />
+  <router-view :key="key" style="padding-left: 60px"/>
 </template>
 
 <script>

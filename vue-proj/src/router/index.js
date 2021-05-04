@@ -28,8 +28,8 @@ export const routes = [
     children: [
       {
         path: '/userData',
+        name: 'User data',
         component: () => import('@/views/UserData.vue'),
-        title: 'UserData',
         icon: 'bar-chart-line-fill',
       },
     ],
@@ -40,8 +40,8 @@ export const routes = [
     children: [
       {
         path: '/Clients',
+        name: 'Clients',
         component: () => import('@/views/Clients.vue'),
-        title: 'Clients',
       },
     ],
   },
@@ -51,8 +51,8 @@ export const routes = [
     children: [
       {
         path: '/page2',
+        name: 'Page 2',
         component: () => import('@/views/Page2.vue'),
-        title: 'Page 2',
       },
     ],
   },
@@ -62,8 +62,8 @@ export const routes = [
     children: [
       {
         path: '/page3',
+        name: 'Page 3',
         component: () => import('@/views/Page3'),
-        title: 'Page 3',
       },
     ],
   },
@@ -73,8 +73,8 @@ export const routes = [
     children: [
       {
         path: '/page4',
+        name: 'Page 4',
         component: () => import('@/views/Page4'),
-        title: 'Page 4',
       },
     ],
   },

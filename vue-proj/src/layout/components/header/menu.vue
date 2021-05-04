@@ -2,9 +2,9 @@
   <div class="menu">
     <menuItem
       v-for="item in routesForDisplay()"
-      :key="item.children[0].title"
+      :key="item.children[0].name"
       class="menu-item"
-      :title="item.children[0].title"
+      :title="item.children[0].name"
       :icon="item.children[0].icon"
       :path="item.children[0].path"
     />
