@@ -1,13 +1,12 @@
 <template>
   <div class="menu">
     <menuItem
-      v-for="item in routes"
-      :key="item.title"
+      v-for="item in routesForDisplay()"
+      :key="item.children[0].title"
       class="menu-item"
-      :title="item.title"
-      :icon="item.icon"
-      :path="item.path"
-      :hidden="item.hidden"
+      :title="item.children[0].title"
+      :icon="item.children[0].icon"
+      :path="item.children[0].path"
     />
   </div>
 </template>
@@ -23,6 +22,11 @@ export default {
     return {
       routes,
     };
+  },
+  methods: {
+    routesForDisplay() {
+      return this.routes.filter((route) => !route.hidden);
+    },
   },
 };
 </script>
@@ -41,6 +45,9 @@ $padding-item-top: 30px;
     color: white;
     text-decoration: none;
     padding: $padding-item-top 40px;
+    &:hover {
+      background-color: rgba(187, 218, 255, 0.81);
+    }
   }
 }
 </style>

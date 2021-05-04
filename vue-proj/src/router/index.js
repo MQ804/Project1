@@ -24,29 +24,59 @@ export const routes = [
   },
   {
     path: '/userData',
-    component: () => import('@/views/UserData.vue'),
-    title: 'UserData',
-    icon: 'bar-chart-line-fill',
+    component: Layout,
+    children: [
+      {
+        path: '/userData',
+        component: () => import('@/views/UserData.vue'),
+        title: 'UserData',
+        icon: 'bar-chart-line-fill',
+      },
+    ],
   },
   {
     path: '/Clients',
-    component: () => import('@/views/Clients.vue'),
-    title: 'Clients',
+    component: Layout,
+    children: [
+      {
+        path: '/Clients',
+        component: () => import('@/views/Clients.vue'),
+        title: 'Clients',
+      },
+    ],
   },
   {
     path: '/page2',
-    component: () => import('@/views/Page2.vue'),
-    title: 'Page 2',
+    component: Layout,
+    children: [
+      {
+        path: '/page2',
+        component: () => import('@/views/Page2.vue'),
+        title: 'Page 2',
+      },
+    ],
   },
   {
     path: '/page3',
-    component: () => import('@/views/Page3'),
-    title: 'Page 3',
+    component: Layout,
+    children: [
+      {
+        path: '/page3',
+        component: () => import('@/views/Page3'),
+        title: 'Page 3',
+      },
+    ],
   },
   {
     path: '/page4',
-    component: () => import('@/views/Page4'),
-    title: 'Page 4',
+    component: Layout,
+    children: [
+      {
+        path: '/page4',
+        component: () => import('@/views/Page4'),
+        title: 'Page 4',
+      },
+    ],
   },
 ];
 
