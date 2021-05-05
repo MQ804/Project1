@@ -1,10 +1,24 @@
 <template>
   <div id="app">
-    <router-view/>
+    <component :is="layout">
+      <router-view/>
+    </component>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import DefaultLayout from './layout/DefaultLayout'
+export default {
+  components: { DefaultLayout },
+  computed: {
+    layout() {
+      return this.$route.meta.layout || 'default-layout'
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

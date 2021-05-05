@@ -7,10 +7,20 @@
       <b-breadcrumb :items="breadcrumbItems"></b-breadcrumb>
     </template>
     <div>
-      <b-tabs content-class="mt-3">
-        <b-tab title="First" @click="breadcrumbItemsFunc('First')" active><p>I'm the first tab</p></b-tab>
-        <b-tab title="Second"  @click="breadcrumbItemsFunc('Second')"><p>I'm the second tab</p></b-tab>
-        <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
+      <b-tabs content-class="mt-3" class="tabs">
+        <b-tab title="Information" @click="breadcrumbItemsFunc('Information')" active>
+          <div class="tab-content"><p>I'm the first tab</p></div>
+        </b-tab>
+        <b-tab title="Tab2" @click="breadcrumbItemsFunc('Tab2')">
+          <div class="tab-content">
+            <p>I'm the second tab</p>
+          </div>
+        </b-tab>
+        <b-tab title="Tab3" @click="breadcrumbItemsFunc('Tab3')">
+          <div class="tab-content">
+            <p>I'm a third tab!</p>
+          </div>
+        </b-tab>
       </b-tabs>
     </div>
   </div>
@@ -27,7 +37,7 @@ export default {
           href: '#',
         },
         {
-          text: 'First',
+          text: 'Information',
           href: '#',
         },
       ],
@@ -51,6 +61,10 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.tab-content {
+  padding: 20px;
+  width: 96%;
+  box-shadow: 1px 1px 3px #000000;
+}
 </style>
