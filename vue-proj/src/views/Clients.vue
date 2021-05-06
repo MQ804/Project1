@@ -1,6 +1,6 @@
 <template>
   <div class="clients">
-    <h1 class="name" style="font-size: 1.6em; margin-top: 20px">
+    <h1>
       {{ this.name }}
     </h1>
     <template>
@@ -8,15 +8,15 @@
     </template>
     <div>
       <b-tabs content-class="mt-3" class="tabs">
-        <b-tab title="Information" @click="breadcrumbItemsFunc('Information')" active>
+        <b-tab title="Information" active>
           <div class="tab-content"><p>I'm the first tab</p></div>
         </b-tab>
-        <b-tab title="Tab2" @click="breadcrumbItemsFunc('Tab2')">
+        <b-tab title="Tab2">
           <div class="tab-content">
             <p>I'm the second tab</p>
           </div>
         </b-tab>
-        <b-tab title="Tab3" @click="breadcrumbItemsFunc('Tab3')">
+        <b-tab title="Tab3">
           <div class="tab-content">
             <p>I'm a third tab!</p>
           </div>
@@ -37,26 +37,12 @@ export default {
           href: '#',
         },
         {
-          text: 'Information',
-          href: '#',
+          text: this.tab,
+          to: { name: 'Clients', params: { tab: this.tab } },
         },
       ],
       name: this.$route.name,
     };
-  },
-  methods: {
-    breadcrumbItemsFunc(nameTab) {
-      this.breadcrumbItems = [
-        {
-          text: this.$route.name,
-          href: '#',
-        },
-        {
-          text: nameTab,
-          href: '#',
-        },
-      ];
-    },
   },
 };
 </script>
@@ -66,5 +52,9 @@ export default {
   padding: 20px;
   width: 96%;
   box-shadow: 1px 1px 3px #000000;
+}
+h1 {
+  font-size: 1.6em;
+  margin-top: 20px;
 }
 </style>

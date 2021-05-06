@@ -7,15 +7,16 @@
 </template>
 
 <script>
-import DefaultLayout from './layout/DefaultLayout'
+import DefaultLayout from './layout/DefaultLayout.vue';
+
 export default {
   components: { DefaultLayout },
   computed: {
     layout() {
-      return this.$route.meta.layout || 'default-layout'
-    }
-  }
-}
+      return this.$route.meta.layout || 'default-layout';
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

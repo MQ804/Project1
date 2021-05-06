@@ -1,5 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import HomePage from '@/views/HomePage.vue';
+import Clients from '@/views/Clients.vue';
+import Page2 from '@/views/Page2.vue';
+import Page3 from '@/views/Page3.vue';
+import Page4 from '@/views/Page4.vue';
 
 Vue.use(VueRouter);
 
@@ -10,27 +15,28 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'Home page',
-      component: () => import('@/views/HomePage.vue')
+      component: HomePage,
     },
     {
-      path: '/Clients',
+      path: '/Clients/:tab?',
       name: 'Clients',
-      component: () => import('@/views/Clients.vue'),
+      component: Clients,
+      props: true,
     },
     {
       path: '/page2',
       name: 'Page 2',
-      component: () => import('@/views/Page2.vue'),
+      component: Page2,
     },
     {
       path: '/page3',
       name: 'Page 3',
-      component: () => import('@/views/Page3'),
+      component: Page3,
     },
     {
       path: '/page4',
       name: 'Page 4',
-      component: () => import('@/views/Page4'),
+      component: Page4,
     },
   ],
 });
