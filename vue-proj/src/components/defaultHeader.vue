@@ -5,7 +5,10 @@
         <router-link class="brand-logo" to="/">
           <b-icon icon="bar-chart-line-fill"></b-icon>UserData
         </router-link>
-        <router-link class="menu-item" to="/Clients">Clients</router-link>
+        <router-link
+          class="menu-item"
+          :to="{ name: 'Clients', params: { tab: 'Information' } }"
+        >Clients</router-link>
         <router-link class="menu-item" to="/Page2">Page 2</router-link>
         <router-link class="menu-item" to="/Page3">Page 3</router-link>
         <router-link class="menu-item" to="/Page4">Page 4</router-link>
