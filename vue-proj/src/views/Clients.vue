@@ -31,7 +31,7 @@ export default {
   name: 'Clients',
   data() {
     return {
-      tab: this.$attrs.tab,
+      tab: this.$route.params.tab,
       name: this.$route.name,
     };
   },

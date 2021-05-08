@@ -13,7 +13,7 @@ import defaultFooter from '../components/defaultFooter.vue';
 import defaultHeader from '../components/defaultHeader.vue';
 
 export default {
-  name: 'index.vue',
+  name: 'defaultLayout',
   components: { defaultHeader, defaultFooter },
 };
 </script>
