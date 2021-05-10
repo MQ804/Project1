@@ -1,16 +1,26 @@
 <template>
   <div class="clients">
-    <h1 class="name" style="font-size: 1.6em; margin-top: 20px">
+    <h1>
       {{ this.name }}
     </h1>
     <template>
       <b-breadcrumb :items="breadcrumbItems"></b-breadcrumb>
     </template>
     <div>
-      <b-tabs content-class="mt-3">
-        <b-tab title="First" @click="breadcrumbItemsFunc('First')" active><p>I'm the first tab</p></b-tab>
-        <b-tab title="Second"  @click="breadcrumbItemsFunc('Second')"><p>I'm the second tab</p></b-tab>
-        <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
+      <b-tabs content-class="mt-3" class="tabs">
+        <b-tab title="Information" @click="onTabClick('Information')" active>
+          <div class="tab-content"><p>I'm the first tab</p></div>
+        </b-tab>
+        <b-tab title="Tab2" @click="onTabClick('Tab2')">
+          <div class="tab-content">
+            <p>I'm the second tab</p>
+          </div>
+        </b-tab>
+        <b-tab title="Tab3" @click="onTabClick('Tab3')">
+          <div class="tab-content">
+            <p>I'm a third tab!</p>
+          </div>
+        </b-tab>
       </b-tabs>
     </div>
   </div>
@@ -21,36 +31,41 @@ export default {
   name: 'Clients',
   data() {
     return {
-      breadcrumbItems: [
-        {
-          text: this.$route.name,
-          href: '#',
-        },
-        {
-          text: 'First',
-          href: '#',
-        },
-      ],
+      tab: this.$route.params.tab,
       name: this.$route.name,
     };
   },
-  methods: {
-    breadcrumbItemsFunc(nameTab) {
-      this.breadcrumbItems = [
+  computed: {
+    breadcrumbItems() {
+      return [
         {
-          text: this.$route.name,
+          text: this.name,
           href: '#',
         },
         {
-          text: nameTab,
-          href: '#',
+          text: this.tab,
+          to: { name: 'Clients', params: { tab: this.tab } },
         },
       ];
+    },
+  },
+  methods: {
+    onTabClick(tab) {
+      this.tab = tab;
+      this.$router.push({ name: 'Clients', params: { tab } });
     },
   },
 };
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.tab-content {
+  padding: 20px;
+  width: 96%;
+  box-shadow: 1px 1px 3px #000000;
+}
+h1 {
+  font-size: 1.6em;
+  margin-top: 20px;
+}
 </style>
