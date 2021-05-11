@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   name: 'Clients',
   data() {
@@ -48,6 +50,11 @@ export default {
         },
       ];
     },
+    ...mapState({
+      userList() {
+        return mapActions('user'.fetchUserList);
+      },
+    }),
   },
   methods: {
     onTabClick(tab) {
