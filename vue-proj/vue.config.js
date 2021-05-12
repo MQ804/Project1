@@ -1,6 +1,15 @@
-/**
- * @type {import('@vue/cli-service').ProjectOptions}
- */
+const path = require('path');
+
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
+
 module.exports = {
-  // настройки...
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src'),
+      },
+    },
+  },
 };
