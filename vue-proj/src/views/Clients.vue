@@ -9,7 +9,9 @@
     <div>
       <b-tabs content-class="mt-3" class="tabs">
         <b-tab title="Information" @click="onTabClick('Information')" active>
-          <div class="tab-content"><p>I'm the first tab</p></div>
+          <div class="tab-content"><div>
+            <b-table striped hover :items="userList"></b-table>
+          </div></div>
         </b-tab>
         <b-tab title="Tab2" @click="onTabClick('Tab2')">
           <div class="tab-content">
@@ -37,6 +39,9 @@ export default {
       name: this.$route.name,
     };
   },
+  created() {
+    this.getUserList();
+  },
   computed: {
     breadcrumbItems() {
       return [
@@ -51,9 +56,7 @@ export default {
       ];
     },
     ...mapState({
-      userList() {
-        return mapActions('user'.fetchUserList);
-      },
+      userList: (state) => state.user.userList,
     }),
   },
   methods: {
@@ -61,6 +64,7 @@ export default {
       this.tab = tab;
       this.$router.push({ name: 'Clients', params: { tab } });
     },
+    ...mapActions({ getUserList: 'user/fetchUserList' }),
   },
 };
 </script>

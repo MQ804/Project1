@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import * as api from '@/api';
+import axios from 'axios';
+import * as api from '../../api';
 
 export const Mutations = Object.freeze({
   USER_LIST: 'USER_LIST',
@@ -10,19 +10,19 @@ export default {
   state: {
     userList: [],
   },
-  mutations: {
-    [Mutations.USER_LIST]: (state, data) => {
-      state.userList = data;
-    },
+  getters: {
   },
   actions: {
     async fetchUserList({ commit }) {
-      const response = await Vue.axios.get(api.default.user.list);
-      commit(Mutations.USER_LIST, response.data);
-
+      const response = await axios.get(process.env.VUE_APP_API_URL.concat(api.default.user.list));
+      commit(Mutations.USER_LIST, response.data.data);
       return response;
     },
   },
-  getters: {
+  mutations: {
+    [Mutations.USER_LIST]: (state, data) => {
+      // eslint-disable-next-line no-param-reassign
+      state.userList = data;
+    },
   },
 };
