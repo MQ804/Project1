@@ -1,4 +1,4 @@
-import axios from 'axios';
+import Vue from 'vue';
 import * as api from '../../api';
 
 export const Mutations = Object.freeze({
@@ -14,7 +14,7 @@ export default {
   },
   actions: {
     async fetchUserList({ commit }) {
-      const response = await axios.get(process.env.VUE_APP_API_URL.concat(api.default.user.list));
+      const response = await Vue.axios.get(api.default.user.list);
       commit(Mutations.USER_LIST, response.data.data);
       return response;
     },

@@ -40,7 +40,7 @@ export default {
     };
   },
   created() {
-    this.getUserList();
+    this.fetchUserList();
   },
   computed: {
     breadcrumbItems() {
@@ -55,16 +55,14 @@ export default {
         },
       ];
     },
-    ...mapState({
-      userList: (state) => state.user.userList,
-    }),
+    ...mapState('user', ['userList']),
   },
   methods: {
     onTabClick(tab) {
       this.tab = tab;
       this.$router.push({ name: 'Clients', params: { tab } });
     },
-    ...mapActions({ getUserList: 'user/fetchUserList' }),
+    ...mapActions('user', ['fetchUserList']),
   },
 };
 </script>
@@ -78,5 +76,8 @@ export default {
 h1 {
   font-size: 1.6em;
   margin-top: 20px;
+}
+input {
+  width: 35px;
 }
 </style>
