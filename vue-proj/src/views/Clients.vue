@@ -10,7 +10,7 @@
       <b-tabs content-class="mt-3" class="tabs">
         <b-tab title="Information" @click="onTabClick('Information')" active>
           <div class="tab-content"><div>
-            <b-table striped hover :items="userList"></b-table>
+            <b-table striped hover :items="userList" :fields="fields"></b-table>
           </div></div>
         </b-tab>
         <b-tab title="Tab2" @click="onTabClick('Tab2')">
@@ -37,6 +37,26 @@ export default {
     return {
       tab: this.$route.params.tab,
       name: this.$route.name,
+      fields: [
+        {
+          key: 'first_name',
+        },
+        {
+          key: 'last_name',
+        },
+        {
+          key: 'country',
+        },
+        {
+          key: 'birthday',
+        },
+        {
+          key: 'email',
+        },
+        {
+          key: 'created_at',
+        },
+      ],
     };
   },
   created() {
@@ -76,8 +96,5 @@ export default {
 h1 {
   font-size: 1.6em;
   margin-top: 20px;
-}
-input {
-  width: 35px;
 }
 </style>
