@@ -12,7 +12,7 @@
           <div class="tab-content">
             <standard-table
               :fields="fields"
-              :date-of-table="userList"
+              :date-of-table="tableItems"
               :id="id"
             />
           </div>
@@ -34,6 +34,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import moment from 'moment';
 import standardTable from '../components/standardTable.vue';
 
 export default {
@@ -44,10 +45,10 @@ export default {
       id: 'clients',
       fields: [
         {
-          key: 'first_name',
+          key: 'firstName',
         },
         {
-          key: 'last_name',
+          key: 'lastName',
         },
         {
           key: 'country',
@@ -59,7 +60,7 @@ export default {
           key: 'email',
         },
         {
-          key: 'created_at',
+          key: 'createdAt',
         },
       ],
       tab: this.$route.params.tab,
@@ -83,6 +84,32 @@ export default {
       ];
     },
     ...mapState('user', ['userList']),
+    tableItems() {
+      const res = [];
+      this.userList.forEach((row) => {
+        const {
+          id,
+          first_name: firstName,
+          last_name: lastName,
+          country,
+          birthday: birthdayOld,
+          email,
+          created_at: createdAtOld,
+        } = row;
+        const birthday = moment(birthdayOld, 'YYYY-MM-DD').format('DD.MM.YYYY');
+        const createdAt = moment(createdAtOld, 'YYYY-MM-DD').format('DD.MM.YYYY');
+        res.push({
+          name: { firstName, id },
+          firstName,
+          lastName,
+          country,
+          birthday,
+          email,
+          createdAt,
+        });
+      });
+      return res;
+    },
   },
   methods: {
     onTabClick(tab) {
