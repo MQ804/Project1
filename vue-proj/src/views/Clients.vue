@@ -85,30 +85,26 @@ export default {
     },
     ...mapState('user', ['userList']),
     tableItems() {
-      const res = [];
-      this.userList.forEach((row) => {
+      return this.userList.map((row) => {
         const {
-          id,
           first_name: firstName,
           last_name: lastName,
-          country,
-          birthday: birthdayOld,
-          email,
-          created_at: createdAtOld,
-        } = row;
-        const birthday = moment(birthdayOld, 'YYYY-MM-DD').format('DD.MM.YYYY');
-        const createdAt = moment(createdAtOld, 'YYYY-MM-DD').format('DD.MM.YYYY');
-        res.push({
-          name: { firstName, id },
-          firstName,
-          lastName,
+          created_at: createdAt,
+          id,
           country,
           birthday,
           email,
-          createdAt,
-        });
+        } = row;
+        return {
+          name: { firstName, id },
+          birthday: moment(birthday, 'YYYY-MM-DD').format('DD.MM.YYYY'),
+          createdAt: moment(createdAt, 'YYYY-MM-DD').format('DD.MM.YYYY'),
+          firstName,
+          lastName,
+          country,
+          email,
+        };
       });
-      return res;
     },
   },
   methods: {
