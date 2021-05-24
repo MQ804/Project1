@@ -85,26 +85,23 @@ export default {
     },
     ...mapState('user', ['userList']),
     tableItems() {
-      return this.userList.map((row) => {
-        const {
-          first_name: firstName,
-          last_name: lastName,
-          created_at: createdAt,
-          id,
-          country,
-          birthday,
-          email,
-        } = row;
-        return {
-          name: { firstName, id },
-          birthday: moment(birthday, 'YYYY-MM-DD').format('DD.MM.YYYY'),
-          createdAt: moment(createdAt, 'YYYY-MM-DD').format('DD.MM.YYYY'),
-          firstName,
-          lastName,
-          country,
-          email,
-        };
-      });
+      return this.userList.map(({
+        first_name: firstName,
+        last_name: lastName,
+        created_at: createdAt,
+        id,
+        country,
+        birthday,
+        email,
+      }) => ({
+        name: { firstName, id },
+        birthday: moment(birthday, 'YYYY-MM-DD').format('DD.MM.YYYY'),
+        createdAt: moment(createdAt, 'YYYY-MM-DD').format('DD.MM.YYYY'),
+        firstName,
+        lastName,
+        country,
+        email,
+      }));
     },
   },
   methods: {
