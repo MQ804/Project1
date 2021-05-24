@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomePage from '@/views/HomePage.vue';
-import Clients from '@/views/Clients.vue';
-import Page2 from '@/views/Page2.vue';
-import Page3 from '@/views/Page3.vue';
-import Page4 from '@/views/Page4.vue';
+import HomePage from '../views/HomePage.vue';
+import Clients from '../views/Clients.vue';
+import Page2 from '../views/Page2.vue';
+import Page3 from '../views/Page3.vue';
+import Page4 from '../views/Page4.vue';
 
 Vue.use(VueRouter);
 
